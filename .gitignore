@@ -1,0 +1,67 @@
+# Compiled binary files
+*.exe
+*.dll
+*.pdb
+*.app
+*.so
+*.dylib
+
+# Build directories
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Visual Studio specific
+.vs/
+.vscode/
+*.code-workspace
+
+# Rider specific
+.idea/
+*.sln.iml
+
+# Logs
+*.log
+*.tlog
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# DotNet specific
+*.swp
+*.lock.json
+*.ide
+*.props
+*.targets
+
+# ASP.NET Core specific
+appsettings*.json
+appsettings*.Development.json
+
+# Publish output
+wwwroot/
+node_modules/
+dist/
+
+# Secrets
+secrets.json
+.env
+.env.*
+
+# JetBrains Rider
+.idea/
+.idea_modules/
