@@ -10,40 +10,13 @@ public static class Runner
 {
     public static void RunGenerics()
     {
-        Console.WriteLine("\nSTUDENTS\n");
-        Student[] students = new Student[7];
-
-        students[0] = new Student("Daniel", "Cueto");
-        students[1] = new Student("Javier", "Sataolalla");
-        students[2] = new Student("Maria", "Serrano");
-        students[3] = new Student("Fernando", null);
-        students[4] = new Student("Xenia", "Cueto");
-        students[5] = new Student("Yoel", "Matamoros");
-        students[6] = new Student("Aitor", "Santafé");
-
-        Array.Sort(students);
-
-        for (int i = 0; i < students.Length; i++) 
-        {
-            Console.WriteLine(students[i]);
-        }
-
-        Console.WriteLine("\n\nAUTHORS\n");
-        Author[] authors = new Author[7];
-
-        // Fills authors array with students data
-        for (int i = 0; i < authors.Length; i++) 
-        {
-            authors[i] = new Author(students[i].Name, students[i].Surname ?? "");
-        }
-
-        Array.Sort(authors);
-
-        for (int i = 0; i < authors.Length; i++)
-        {
-            Console.WriteLine(authors[i]);
-        }
-
+        IStudentRepository studentRepository = new StudentRepository();
+        StudentPrinterService studentService = new StudentPrinterService(studentRepository);
+        studentService.PrintStudents();
+        
+        IAuthorRepository authorRepository = new AuthorRepository();
+        AuthorPrinterService printerService = new AuthorPrinterService(authorRepository);
+        printerService.PrintAuthors();
     }
 
     public static void RunClassWithInterfaces()
