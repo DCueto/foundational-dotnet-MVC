@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace NetUniversity.CSharp.Generics;
 
-namespace NetUniversity.CSharp.Generics;
-
-public class Student : IComparable
+public class Student : IComparable<Student>
 {
     public string Name { get; set; }
     public string? Surname { get; set; }
@@ -22,26 +16,21 @@ public class Student : IComparable
         return $"{Name} {Surname ?? ""}".Trim();
     }
 
-    public int CompareTo(object? obj)
+    public int CompareTo(Student? otherStudent)
     {
-        if (obj is null) 
+        if (otherStudent is null) 
             return 1;
 
-        if (obj is Student otherStudent)
+        if (otherStudent.Surname == this.Surname)
         {
-            if (otherStudent.Surname == this.Surname)
-            {
-                return this.Name.CompareTo(otherStudent.Name);
-            }
-
-            if (this.Surname is null || otherStudent.Surname is null)
-            {
-                return -1;
-            }
-
-            return this.Surname!.CompareTo(otherStudent.Surname);
+            return this.Name.CompareTo(otherStudent.Name);
         }
 
-        throw new ArgumentException("It isn't an object of type 'student'", nameof(obj));
+        if (this.Surname is null || otherStudent.Surname is null)
+        {
+            return -1;
+        }
+
+        return this.Surname!.CompareTo(otherStudent.Surname);
     }
 }

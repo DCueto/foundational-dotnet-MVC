@@ -10,7 +10,8 @@ public static class Runner
 {
     public static void RunGenerics()
     {
-        Student[] students = new Student[10];
+        Console.WriteLine("\nSTUDENTS\n");
+        Student[] students = new Student[7];
 
         students[0] = new Student("Daniel", "Cueto");
         students[1] = new Student("Javier", "Sataolalla");
@@ -20,15 +21,29 @@ public static class Runner
         students[5] = new Student("Yoel", "Matamoros");
         students[6] = new Student("Aitor", "Santafé");
 
-        //Console.WriteLine(students[3].ToString());
-        //Console.WriteLine(students[0].ToString());
-
         Array.Sort(students);
 
         for (int i = 0; i < students.Length; i++) 
         {
             Console.WriteLine(students[i]);
         }
+
+        Console.WriteLine("\n\nAUTHORS\n");
+        Author[] authors = new Author[7];
+
+        // Fills authors array with students data
+        for (int i = 0; i < authors.Length; i++) 
+        {
+            authors[i] = new Author(students[i].Name, students[i].Surname ?? "");
+        }
+
+        Array.Sort(authors);
+
+        for (int i = 0; i < authors.Length; i++)
+        {
+            Console.WriteLine(authors[i]);
+        }
+
     }
 
     public static void RunClassWithInterfaces()
