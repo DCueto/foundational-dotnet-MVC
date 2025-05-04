@@ -2,17 +2,30 @@
 
 public delegate void MyHandlerEvent(string value);
 
+public class MyEventArgs : EventArgs
+{
+    public required string data;
+}
+
 public class EventPublisher
 {
     private string theVal = "";
 
     // Define Event
     public event MyHandlerEvent valueChanged = null!;
+
+    // .NET Event
+    public event EventHandler<MyEventArgs> myEvent = null!;
     public string Val {
         set 
         { 
             this.theVal = value;
+
+            // Event
             this.valueChanged(this.theVal);
+
+            // .NET Event
+            this.myEvent(this, new MyEventArgs { data = this.theVal });
         }
     }
 }
@@ -31,6 +44,13 @@ public static class Events{
         // Chain events
         obj.valueChanged += new MyHandlerEvent(eventLogic1);
         obj.valueChanged += new MyHandlerEvent(eventLogic2);
+
+        // Dotnet Event
+        obj.myEvent += delegate (object? sender, MyEventArgs e)
+        {
+            if (sender != null)
+                Console.WriteLine($"Sender {sender.GetType()}: property value changed is {e.data}");
+        };
 
         static void eventLogic1(string value)
         {
@@ -61,4 +81,5 @@ public static class Events{
 
         Console.WriteLine("Program exited successfully!");
     }
+    
 }
