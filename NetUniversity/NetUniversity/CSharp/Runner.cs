@@ -2,11 +2,35 @@
 using NetUniversity.CSharp.OOP;
 using NetUniversity.CSharp.Interfaces;
 using System.ComponentModel;
+using NetUniversity.CSharp.Generics;
 
 namespace NetUniversity.CSharp;
 
 public static class Runner
 {
+    public static void RunGenerics()
+    {
+        Student[] students = new Student[10];
+
+        students[0] = new Student("Daniel", "Cueto");
+        students[1] = new Student("Javier", "Sataolalla");
+        students[2] = new Student("Maria", "Serrano");
+        students[3] = new Student("Fernando", null);
+        students[4] = new Student("Xenia", "Cueto");
+        students[5] = new Student("Yoel", "Matamoros");
+        students[6] = new Student("Aitor", "Santafé");
+
+        //Console.WriteLine(students[3].ToString());
+        //Console.WriteLine(students[0].ToString());
+
+        Array.Sort(students);
+
+        for (int i = 0; i < students.Length; i++) 
+        {
+            Console.WriteLine(students[i]);
+        }
+    }
+
     public static void RunClassWithInterfaces()
     {
         Document document = new Document("Daniel Cueto");
