@@ -1,10 +1,49 @@
 ﻿using NetUniversity.CSharp.CollectionsAndLists;
 using NetUniversity.CSharp.OOP;
+using NetUniversity.CSharp.Interfaces;
+using System.ComponentModel;
 
 namespace NetUniversity.CSharp;
 
 public static class Runner
 {
+    public static void RunClassWithInterfaces()
+    {
+        Document document = new Document("Daniel Cueto");
+        document.Load();
+        document.Save();
+        Console.WriteLine($"Document needs to save? Answer: {document.HasToSave()}");
+
+        // Validating and Casting
+        if (document is IOperations)
+        {
+            Console.WriteLine($"Document has IOperations interface");
+            document.Save();
+        }
+
+        IOperations iop = document as IOperations;
+        if (iop is not null)
+        {
+            Console.WriteLine($"Cast 'iop' from 'Document' instance to 'IOperations' was successful");
+            iop.Save();
+        }
+
+        document.SendEmail();
+        document.SendTextMessage();
+        document.SendNotification();
+
+        IMessaging imessaging = document as IMessaging;
+        imessaging?.SendNotification();
+
+        // Dotnet interface method
+        document.PropertyChanged += (object? sender, PropertyChangedEventArgs eArgs) =>
+        {
+            Console.WriteLine($"Document {sender?.GetType()} property changed is {eArgs.PropertyName}");
+        };
+
+        document.DocumentName = "Software Engineering";
+    }
+
     public static void RunEvents()
     {
         Events.RunEvents();

@@ -12,4 +12,5 @@ Console.WriteLine("Hello, CSharp!");
 //Runner.RunDictionaries();
 
 //Runner.RunDelegates();
-Runner.RunEvents();
+//Runner.RunEvents();
+Runner.RunClassWithInterfaces();
