@@ -2,9 +2,9 @@
 
 public class StudentPrinterService
 {
-    private readonly IStudentRepository _studentRepository;
+    private readonly IRepository<Student> _studentRepository;
 
-    public StudentPrinterService(IStudentRepository studentRepository)
+    public StudentPrinterService(IRepository<Student> studentRepository)
     {
         _studentRepository = studentRepository;
     }

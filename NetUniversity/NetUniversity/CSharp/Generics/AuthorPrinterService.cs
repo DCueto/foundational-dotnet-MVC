@@ -2,9 +2,9 @@
 
 public class AuthorPrinterService
 {
-    private readonly IAuthorRepository _authorRepository;
+    private readonly IRepository<Author> _authorRepository;
 
-    public AuthorPrinterService(IAuthorRepository authorRepository)
+    public AuthorPrinterService(IRepository<Author> authorRepository)
     {
         _authorRepository = authorRepository;
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetUniversity.CSharp.Generics;
 
-public class StudentRepository : IStudentRepository
+public class StudentRepository : IRepository<Student>
 {
     public Student[] List()
     {

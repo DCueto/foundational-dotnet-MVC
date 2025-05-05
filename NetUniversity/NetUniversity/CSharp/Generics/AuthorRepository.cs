@@ -1,8 +1,7 @@
 ﻿namespace NetUniversity.CSharp.Generics;
 
-public class AuthorRepository : IAuthorRepository
+public class AuthorRepository : IRepository<Author>
 {
-    
     public Author[] List()
     {
         Author[] authors = new Author[7];

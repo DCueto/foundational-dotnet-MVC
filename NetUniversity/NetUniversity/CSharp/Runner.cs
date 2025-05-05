@@ -10,11 +10,11 @@ public static class Runner
 {
     public static void RunGenerics()
     {
-        IStudentRepository studentRepository = new StudentRepository();
+        IRepository<Student> studentRepository = new StudentRepository();
         StudentPrinterService studentService = new StudentPrinterService(studentRepository);
         studentService.PrintStudents();
         
-        IAuthorRepository authorRepository = new AuthorRepository();
+        IRepository<Author> authorRepository = new AuthorRepository();
         AuthorPrinterService printerService = new AuthorPrinterService(authorRepository);
         printerService.PrintAuthors();
     }
