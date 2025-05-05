@@ -2,6 +2,7 @@
 
 public class Student : IComparable<Student>
 {
+    public static int StudentsCount = 0;
     public string Name { get; set; }
     public string? Surname { get; set; }
 
@@ -9,6 +10,7 @@ public class Student : IComparable<Student>
     {
         Name = name;
         Surname = surname;
+        StudentsCount++;
     }
 
     public override string ToString()
@@ -34,3 +36,5 @@ public class Student : IComparable<Student>
         return this.Surname!.CompareTo(otherStudent.Surname);
     }
 }
+
+public record FullName(string Name, string Surname);

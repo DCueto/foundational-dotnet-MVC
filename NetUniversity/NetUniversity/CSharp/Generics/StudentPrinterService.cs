@@ -9,13 +9,24 @@ public class StudentPrinterService
         _studentRepository = studentRepository;
     }
 
-    public void PrintStudents()
+    public void PrintStudents(int numToPrint = 100)
     {
-        Student[] students = _studentRepository.List();
-        Array.Sort(students);
+        IEnumerable<Student> students = _studentRepository.List().Take(numToPrint);//.ToArray();
+        //Array.Sort(students);
 
-        Console.WriteLine($"\nPrinting Student List from method {nameof(PrintStudents)}\n");
-        foreach (Student student in students) 
+        //Console.WriteLine($"\nPrinting Student List from method {nameof(PrintStudents)}\n");
+
+        //for (int i = 0; i < students.Length; i++)
+        //{
+        //    Console.WriteLine(students[i]);
+        //}
+        PrintStudentsFromEnumerable(students);
+    }
+
+    private void PrintStudentsFromEnumerable(IEnumerable<Student> students) 
+    {
+        Console.WriteLine($"Students:\n");
+        foreach (Student student in students)
         {
             Console.WriteLine(student);
         }

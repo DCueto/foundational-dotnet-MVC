@@ -11,7 +11,7 @@ public class AuthorPrinterService
 
     public void PrintAuthors()
     {
-        Author[] authors = _authorRepository.List();
+        Author[] authors = _authorRepository.List().ToArray();
         Array.Sort(authors);
 
         Console.WriteLine($"\nPrinting Author List from method {nameof(PrintAuthors)}\n");

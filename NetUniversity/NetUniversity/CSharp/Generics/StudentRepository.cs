@@ -8,18 +8,26 @@ namespace NetUniversity.CSharp.Generics;
 
 public class StudentRepository : IRepository<Student>
 {
-    public Student[] List()
+    private FullName[] _fullNames = new FullName[7];
+
+    public StudentRepository()
     {
-        Student[] students = new Student[7];
+        _fullNames[0] = new FullName("Daniel", "Cueto");
+        _fullNames[1] = new FullName("Javier", "Sataolalla");
+        _fullNames[2] = new FullName("Maria", "Serrano");
+        _fullNames[3] = new FullName("Fernando", "Parra");
+        _fullNames[4] = new FullName("Xenia", "Cueto");
+        _fullNames[5] = new FullName("Yoel", "Matamoros");
+        _fullNames[6] = new FullName("Aitor", "Santafé");
+    }
 
-        students[0] = new Student("Daniel", "Cueto");
-        students[1] = new Student("Javier", "Sataolalla");
-        students[2] = new Student("Maria", "Serrano");
-        students[3] = new Student("Fernando", null);
-        students[4] = new Student("Xenia", "Cueto");
-        students[5] = new Student("Yoel", "Matamoros");
-        students[6] = new Student("Aitor", "Santafé");
-
-        return students;
+    public IEnumerable<Student> List()
+    {
+        int index = 0;
+        while (index < _fullNames.Length)
+        {
+            yield return new Student(_fullNames[index].Name, _fullNames[index].Surname);
+            index++;
+        }
     }
 }

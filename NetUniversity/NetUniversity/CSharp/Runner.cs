@@ -12,7 +12,9 @@ public static class Runner
     {
         IRepository<Student> studentRepository = new StudentRepository();
         StudentPrinterService studentService = new StudentPrinterService(studentRepository);
-        studentService.PrintStudents();
+        studentService.PrintStudents(5);
+
+        Console.WriteLine($"Total students: {Student.StudentsCount}");
         
         IRepository<Author> authorRepository = new AuthorRepository();
         AuthorPrinterService printerService = new AuthorPrinterService(authorRepository);

@@ -8,5 +8,5 @@ namespace NetUniversity.CSharp.Generics;
 
 public interface IRepository<T>
 {
-    T[] List();
+    IEnumerable<T> List();
 }

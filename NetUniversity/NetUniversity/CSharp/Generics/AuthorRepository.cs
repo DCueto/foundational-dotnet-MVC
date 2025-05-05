@@ -2,7 +2,7 @@
 
 public class AuthorRepository : IRepository<Author>
 {
-    public Author[] List()
+    public IEnumerable<Author> List()
     {
         Author[] authors = new Author[7];
 
