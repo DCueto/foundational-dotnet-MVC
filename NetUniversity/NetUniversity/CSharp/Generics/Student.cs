@@ -1,16 +1,16 @@
 ﻿namespace NetUniversity.CSharp.Generics;
 
-public class Student : IComparable<Student>
+public class Student : Person, IComparable<Student>
 {
-    public static int StudentsCount = 0;
-    public string Name { get; set; }
-    public string? Surname { get; set; }
+    //public static int StudentsCount = 0;
+    public Student() : this("DefaultName", "DefaultSurname")
+    { }
 
     public Student(string name, string? surname)
     {
         Name = name;
         Surname = surname;
-        StudentsCount++;
+        //StudentsCount++;
     }
 
     public override string ToString()
@@ -36,5 +36,3 @@ public class Student : IComparable<Student>
         return this.Surname!.CompareTo(otherStudent.Surname);
     }
 }
-
-public record FullName(string Name, string Surname);

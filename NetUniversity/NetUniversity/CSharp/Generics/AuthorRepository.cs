@@ -16,4 +16,11 @@ public class AuthorRepository : IRepository<Author>
 
         return authors;
     }
+
+    public IEnumerable<Author> GetOrderedList()
+    {
+        var authors = List().ToList();
+        authors.Sort();
+        return authors;
+    }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace NetUniversity.CSharp.Generics;
 
-public interface IRepository<T>
+public interface IRepository<T> where T : Person, IComparable<T>
 {
     IEnumerable<T> List();
+    IEnumerable<T> GetOrderedList();
 }

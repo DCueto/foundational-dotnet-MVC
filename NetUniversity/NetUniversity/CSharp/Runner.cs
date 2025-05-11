@@ -10,11 +10,9 @@ public static class Runner
 {
     public static void RunGenerics()
     {
-        IRepository<Student> studentRepository = new StudentRepository();
+        IPersonRepository<Student> studentRepository = new StudentRepository();
         StudentPrinterService studentService = new StudentPrinterService(studentRepository);
         studentService.PrintStudents(5);
-
-        Console.WriteLine($"Total students: {Student.StudentsCount}");
         
         IRepository<Author> authorRepository = new AuthorRepository();
         AuthorPrinterService printerService = new AuthorPrinterService(authorRepository);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetUniversity.CSharp.Generics;
 
-public class StudentRepository : IRepository<Student>
+public class StudentRepository : IPersonRepository<Student>
 {
     private FullName[] _fullNames = new FullName[7];
 
@@ -30,4 +30,21 @@ public class StudentRepository : IRepository<Student>
             index++;
         }
     }
+
+    public IEnumerable<Student> GetOrderedList()
+    {
+        var students = List().ToList();
+        students.Sort();
+        return students;
+    }
+
+    public IEnumerable<Student> Search(string name)
+    {
+        return List()
+            .Where(s => s.Name == name
+                || s.Surname == name);
+    }
+
+    public Student Create(FullName fullName) => new Student(fullName.Name, fullName.Surname);
+    public Student CreateByDefault() => new Student();
 }
