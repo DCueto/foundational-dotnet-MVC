@@ -1,7 +1,5 @@
 ﻿using NetUniversity.CSharp;
 
-Console.WriteLine("Hello, CSharp!");
-
 //Runner.RunExceptions();
 //Runner.RunMethods();
 
@@ -15,4 +13,5 @@ Console.WriteLine("Hello, CSharp!");
 //Runner.RunEvents();
 
 //Runner.RunClassWithInterfaces();
-Runner.RunGenerics();
+//Runner.RunGenerics();
+Runner.RunReflection();
